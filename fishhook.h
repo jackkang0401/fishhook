@@ -42,9 +42,9 @@ extern "C" {
  * name to its replacement
  */
 struct rebinding {
-  const char *name;
-  void *replacement;
-  void **replaced;
+  const char *name;//函数名称，C语言
+  void *replacement;//新函数指针
+  void **replaced;//原函数地址的指针
 };
 
 /*
@@ -63,8 +63,9 @@ int rebind_symbols(struct rebinding rebindings[], size_t rebindings_nel);
  * to the mach-o header, the slide should be the slide offset. Others as above.
  */
 FISHHOOK_VISIBILITY
-int rebind_symbols_image(void *header,
-                         intptr_t slide,
+//image 镜像，可执行文件 动态链接库
+int rebind_symbols_image(void *header,//mach-o
+                         intptr_t slide,//ASLR偏移量
                          struct rebinding rebindings[],
                          size_t rebindings_nel);
 
