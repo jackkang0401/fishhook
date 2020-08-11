@@ -120,7 +120,6 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
     // 在 Indirect Symbol 表中检索到对应位置
     const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;
     // 获取 _DATA.__nl_symbol_ptr（_DATA.__la_symbol_ptr）
-
     uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;
     void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);
     vm_prot_t oldProtection = VM_PROT_READ;
