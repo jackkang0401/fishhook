@@ -1,0 +1,525 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55EE04E584317CB7184C84BC0BF427CE /* fishhook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */; };
+		58EAA4850AD6D96799EA9D380C8521DC /* Pods-KYSFishhook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D39F522F88CB95E75C886C5EEF3C88AB /* Pods-KYSFishhook-dummy.m */; };
+		5F21E3DD09D968BE1D16629E74477DFF /* fishhook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		82F7B340459E3D0E77101F3AF94C0ADA /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C64967DAC8278393A0E5AB0F35018DC8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		711EF4F62DA345E383832B74D8E79372 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58CAF5B0291DAB42086F0645150E1791;
+			remoteInfo = fishhook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.release.xcconfig; sourceTree = "<group>"; };
+		11A531AA86DEFFBBA9DC480BC78DAC77 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.debug.xcconfig; sourceTree = "<group>"; };
+		1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */ = {isa = PBXFileReference; includeInIndex = 1; path = fishhook.c; sourceTree = "<group>"; };
+		21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		33CD62EC6170A612FBC1A5DDC4E69E27 /* Pods-KYSFishhook-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KYSFishhook-acknowledgements.markdown"; sourceTree = "<group>"; };
+		47D5D648E0905DBE703450D1AC418C60 /* Pods-KYSFishhook-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KYSFishhook-acknowledgements.plist"; sourceTree = "<group>"; };
+		494CEC2170E82800F5A6E747148C4C81 /* Pods-KYSFishhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KYSFishhook.release.xcconfig"; sourceTree = "<group>"; };
+		56E7BF947E114A1FBC9F2974648BB673 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		84A9892868E6F824F0BB08954AEA5909 /* fishhook.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = fishhook.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9CA216629A7529B075F3AC826470B254 /* libfishhook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libfishhook.a; path = libfishhook.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E3986CE30914CB2A8D0DE410FAE4CA6 /* fishhook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = fishhook.modulemap; sourceTree = "<group>"; };
+		B3EE11441A1CA0FB358EAA84C831A082 /* Pods-KYSFishhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KYSFishhook.debug.xcconfig"; sourceTree = "<group>"; };
+		D39F522F88CB95E75C886C5EEF3C88AB /* Pods-KYSFishhook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KYSFishhook-dummy.m"; sourceTree = "<group>"; };
+		D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "fishhook-dummy.m"; sourceTree = "<group>"; };
+		D829D6F71D276179584D0AB344223EB3 /* fishhook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-prefix.pch"; sourceTree = "<group>"; };
+		F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-umbrella.h"; sourceTree = "<group>"; };
+		FD77720AF767D5E1D31CB7677B8A9757 /* libPods-KYSFishhook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-KYSFishhook.a"; path = "libPods-KYSFishhook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1189EC024F673A238E2049848CF408A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85632A020E43106B77D0CDBC91C78413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25B9C14CB92FE4762C7F358BD2AC4021 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C091334930957AEC11543CD0D5F9AE2 /* fishhook */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		31F5049F8D6315B1FEF91D15B1D63788 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CA216629A7529B075F3AC826470B254 /* libfishhook.a */,
+				FD77720AF767D5E1D31CB7677B8A9757 /* libPods-KYSFishhook.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A2908994AC0AEAD9EB70BF67020528B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A984E57BD99893AE4A465EA28BAC9BDD /* Pods-KYSFishhook */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5C091334930957AEC11543CD0D5F9AE2 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */,
+				21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */,
+				A037CDC1A5605EFE85B5DC95F17DED9B /* Pod */,
+				9861B333356BA85CACE71173261E4100 /* Support Files */,
+			);
+			name = fishhook;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		9861B333356BA85CACE71173261E4100 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E3986CE30914CB2A8D0DE410FAE4CA6 /* fishhook.modulemap */,
+				D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */,
+				D829D6F71D276179584D0AB344223EB3 /* fishhook-prefix.pch */,
+				F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */,
+				13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */,
+				060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "KYSFishhook/Pods/Target Support Files/fishhook";
+			sourceTree = "<group>";
+		};
+		A037CDC1A5605EFE85B5DC95F17DED9B /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				84A9892868E6F824F0BB08954AEA5909 /* fishhook.podspec */,
+				11A531AA86DEFFBBA9DC480BC78DAC77 /* LICENSE */,
+				56E7BF947E114A1FBC9F2974648BB673 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		A984E57BD99893AE4A465EA28BAC9BDD /* Pods-KYSFishhook */ = {
+			isa = PBXGroup;
+			children = (
+				33CD62EC6170A612FBC1A5DDC4E69E27 /* Pods-KYSFishhook-acknowledgements.markdown */,
+				47D5D648E0905DBE703450D1AC418C60 /* Pods-KYSFishhook-acknowledgements.plist */,
+				D39F522F88CB95E75C886C5EEF3C88AB /* Pods-KYSFishhook-dummy.m */,
+				B3EE11441A1CA0FB358EAA84C831A082 /* Pods-KYSFishhook.debug.xcconfig */,
+				494CEC2170E82800F5A6E747148C4C81 /* Pods-KYSFishhook.release.xcconfig */,
+			);
+			name = "Pods-KYSFishhook";
+			path = "Target Support Files/Pods-KYSFishhook";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				25B9C14CB92FE4762C7F358BD2AC4021 /* Development Pods */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				31F5049F8D6315B1FEF91D15B1D63788 /* Products */,
+				4A2908994AC0AEAD9EB70BF67020528B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3FC3481998671627B06BA1CC9AD5E5C7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		928E56036A27CC806BBA23BC39140658 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F21E3DD09D968BE1D16629E74477DFF /* fishhook-umbrella.h in Headers */,
+				82F7B340459E3D0E77101F3AF94C0ADA /* fishhook.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		58CAF5B0291DAB42086F0645150E1791 /* fishhook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ADA07BF80B602420870DF57377398AF /* Build configuration list for PBXNativeTarget "fishhook" */;
+			buildPhases = (
+				928E56036A27CC806BBA23BC39140658 /* Headers */,
+				F904B82F27846B93B22637F26F65FD1A /* Sources */,
+				85632A020E43106B77D0CDBC91C78413 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fishhook;
+			productName = fishhook;
+			productReference = 9CA216629A7529B075F3AC826470B254 /* libfishhook.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8DD98CE04E0D05F23FEC3CEAAD381F07 /* Pods-KYSFishhook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5F85AD50E4DA12933186DD9FC4F5267 /* Build configuration list for PBXNativeTarget "Pods-KYSFishhook" */;
+			buildPhases = (
+				3FC3481998671627B06BA1CC9AD5E5C7 /* Headers */,
+				CEB664F7EB14179E4D826E6DFD70712B /* Sources */,
+				1189EC024F673A238E2049848CF408A0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9897AD7C99336A8069B5E1E2AA7DF9E /* PBXTargetDependency */,
+			);
+			name = "Pods-KYSFishhook";
+			productName = "Pods-KYSFishhook";
+			productReference = FD77720AF767D5E1D31CB7677B8A9757 /* libPods-KYSFishhook.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 31F5049F8D6315B1FEF91D15B1D63788 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58CAF5B0291DAB42086F0645150E1791 /* fishhook */,
+				8DD98CE04E0D05F23FEC3CEAAD381F07 /* Pods-KYSFishhook */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEB664F7EB14179E4D826E6DFD70712B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EAA4850AD6D96799EA9D380C8521DC /* Pods-KYSFishhook-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F904B82F27846B93B22637F26F65FD1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EE04E584317CB7184C84BC0BF427CE /* fishhook-dummy.m in Sources */,
+				C64967DAC8278393A0E5AB0F35018DC8 /* fishhook.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9897AD7C99336A8069B5E1E2AA7DF9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = fishhook;
+			target = 58CAF5B0291DAB42086F0645150E1791 /* fishhook */;
+			targetProxy = 711EF4F62DA345E383832B74D8E79372 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		196DFA3E4A09A28224918543529A1885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		37DF148AEF5CA4D70AEB91166F3D6BEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/fishhook/fishhook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MODULEMAP_FILE = Headers/Public/fishhook/fishhook.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = fishhook;
+				PRODUCT_NAME = fishhook;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9144669CB9B1102608C98BCAECD5F197 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 494CEC2170E82800F5A6E747148C4C81 /* Pods-KYSFishhook.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0215CAC605C3FF349BFF963D4337F8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3EE11441A1CA0FB358EAA84C831A082 /* Pods-KYSFishhook.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A147222611A114B8EF228B9A0A03D8BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/fishhook/fishhook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MODULEMAP_FILE = Headers/Public/fishhook/fishhook.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = fishhook;
+				PRODUCT_NAME = fishhook;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				196DFA3E4A09A28224918543529A1885 /* Debug */,
+				B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ADA07BF80B602420870DF57377398AF /* Build configuration list for PBXNativeTarget "fishhook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37DF148AEF5CA4D70AEB91166F3D6BEC /* Debug */,
+				A147222611A114B8EF228B9A0A03D8BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5F85AD50E4DA12933186DD9FC4F5267 /* Build configuration list for PBXNativeTarget "Pods-KYSFishhook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0215CAC605C3FF349BFF963D4337F8B /* Debug */,
+				9144669CB9B1102608C98BCAECD5F197 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

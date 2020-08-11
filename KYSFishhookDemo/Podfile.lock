@@ -1,0 +1,16 @@
+PODS:
+  - fishhook (0.2)
+
+DEPENDENCIES:
+  - fishhook (from `../`)
+
+EXTERNAL SOURCES:
+  fishhook:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  fishhook: ea19933abfe8f2f52c55fd8b6e2718467d3ebc89
+
+PODFILE CHECKSUM: c78de5221427766d8cacbfa7c2bd46c09412a166
+
+COCOAPODS: 1.9.3
