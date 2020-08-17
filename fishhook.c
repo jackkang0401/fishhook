@@ -127,9 +127,9 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
         oldProtection = get_protection(rebindings);
         mprotect(indirect_symbol_bindings, section->size, PROT_READ | PROT_WRITE);
     }
-    // 用 size / 一阶指针来计算个数，遍历整个 Section
+    // 用（size / 一阶指针）来计算个数，遍历整个 Section
     for (uint i = 0; i < section->size / sizeof(void *); i++) {
-        // 通过下标来获取每一个 Indirect Address 的 value，这个 Value 也是外层寻址时需要的下标
+        // 通过下标来获取每一个 Indirect Address 的 value，这个 value 也是外层寻址时需要的下标
         uint32_t symtab_index = indirect_symbol_indices[i];         // 获取符号表的索引
         if (symtab_index == INDIRECT_SYMBOL_ABS || symtab_index == INDIRECT_SYMBOL_LOCAL ||
             symtab_index == (INDIRECT_SYMBOL_LOCAL   | INDIRECT_SYMBOL_ABS)) {
@@ -151,7 +151,7 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
                         *(cur->rebindings[j].replaced) = indirect_symbol_bindings[i];   // 记录原始跳转地址
                     }
                     indirect_symbol_bindings[i] = cur->rebindings[j].replacement;       // 重写跳转地址
-                    goto symbol_loop; // 迭代到下一个 Indirect Symbol
+                    goto symbol_loop; // 迭代到下一个
                 }
             }
             cur = cur->next;
