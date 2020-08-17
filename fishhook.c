@@ -216,12 +216,12 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
      */
     // Find base symbol/string table addresses
     uintptr_t linkedit_base = (uintptr_t)slide + linkedit_segment->vmaddr - linkedit_segment->fileoff;
-    // 通过 base + symtab 的偏移量 计算 symtab 表的首地址，并获取 nlist_t 结构体实例
+    // 计算 symbol table 表的首地址
     nlist_t *symtab = (nlist_t *)(linkedit_base + symtab_cmd->symoff);
-    // 通过 base + stroff 字符表偏移量计算字符表中的，获取字符串表首地址
+    // 计算 string table 首地址
     char *strtab = (char *)(linkedit_base + symtab_cmd->stroff);
     
-    // 通过 base + indirectsymoff 偏移量来计算动态符号表的首地址
+    // 计算 indirect symbol table 的首地址
     // Get indirect symbol table (array of uint32_t indices into symbol table)
     uint32_t *indirect_symtab = (uint32_t *)(linkedit_base + dysymtab_cmd->indirectsymoff);
     
