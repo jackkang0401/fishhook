@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55EE04E584317CB7184C84BC0BF427CE /* fishhook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */; };
+		55EE04E584317CB7184C84BC0BF427CE /* fishhook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CFB907B221EAA9C975A28FBAB193B /* fishhook-dummy.m */; };
 		58EAA4850AD6D96799EA9D380C8521DC /* Pods-KYSFishhook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D39F522F88CB95E75C886C5EEF3C88AB /* Pods-KYSFishhook-dummy.m */; };
-		5F21E3DD09D968BE1D16629E74477DFF /* fishhook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		82F7B340459E3D0E77101F3AF94C0ADA /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C64967DAC8278393A0E5AB0F35018DC8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5F21E3DD09D968BE1D16629E74477DFF /* fishhook-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB5216A8CFC17A0C1BC56ED4D14CDA0 /* fishhook-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		82F7B340459E3D0E77101F3AF94C0ADA /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 08F8267941A36DA177C4BEA484E2AFDD /* fishhook.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C64967DAC8278393A0E5AB0F35018DC8 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = BD9D94161840D477F3C67152DA9E5DCB /* fishhook.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,25 +25,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.release.xcconfig; sourceTree = "<group>"; };
-		11A531AA86DEFFBBA9DC480BC78DAC77 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.debug.xcconfig; sourceTree = "<group>"; };
-		1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */ = {isa = PBXFileReference; includeInIndex = 1; path = fishhook.c; sourceTree = "<group>"; };
-		21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		08F8267941A36DA177C4BEA484E2AFDD /* fishhook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
 		33CD62EC6170A612FBC1A5DDC4E69E27 /* Pods-KYSFishhook-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KYSFishhook-acknowledgements.markdown"; sourceTree = "<group>"; };
+		35234871BC0740B0CA0388D4A3568BC8 /* fishhook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-prefix.pch"; sourceTree = "<group>"; };
+		4277A0A1E934096BBFAF2A07C7584140 /* fishhook.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = fishhook.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		47D5D648E0905DBE703450D1AC418C60 /* Pods-KYSFishhook-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KYSFishhook-acknowledgements.plist"; sourceTree = "<group>"; };
 		494CEC2170E82800F5A6E747148C4C81 /* Pods-KYSFishhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KYSFishhook.release.xcconfig"; sourceTree = "<group>"; };
-		56E7BF947E114A1FBC9F2974648BB673 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		84A9892868E6F824F0BB08954AEA5909 /* fishhook.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = fishhook.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6863178DFCD9A929815B51CEFD60A884 /* fishhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.debug.xcconfig; sourceTree = "<group>"; };
+		91AF37DBA44575C09FE82C0F20258F91 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		991F75A478F91052BE4F5579D3EF6EF0 /* fishhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = fishhook.release.xcconfig; sourceTree = "<group>"; };
+		9B2CFB907B221EAA9C975A28FBAB193B /* fishhook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "fishhook-dummy.m"; sourceTree = "<group>"; };
 		9CA216629A7529B075F3AC826470B254 /* libfishhook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libfishhook.a; path = libfishhook.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E3986CE30914CB2A8D0DE410FAE4CA6 /* fishhook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = fishhook.modulemap; sourceTree = "<group>"; };
 		B3EE11441A1CA0FB358EAA84C831A082 /* Pods-KYSFishhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KYSFishhook.debug.xcconfig"; sourceTree = "<group>"; };
+		BD9D94161840D477F3C67152DA9E5DCB /* fishhook.c */ = {isa = PBXFileReference; includeInIndex = 1; path = fishhook.c; sourceTree = "<group>"; };
+		CA5C644804677E00B1F8DE803A0ACC14 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		CFB5216A8CFC17A0C1BC56ED4D14CDA0 /* fishhook-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-umbrella.h"; sourceTree = "<group>"; };
 		D39F522F88CB95E75C886C5EEF3C88AB /* Pods-KYSFishhook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KYSFishhook-dummy.m"; sourceTree = "<group>"; };
-		D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "fishhook-dummy.m"; sourceTree = "<group>"; };
-		D829D6F71D276179584D0AB344223EB3 /* fishhook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-prefix.pch"; sourceTree = "<group>"; };
-		F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "fishhook-umbrella.h"; sourceTree = "<group>"; };
 		FD77720AF767D5E1D31CB7677B8A9757 /* libPods-KYSFishhook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-KYSFishhook.a"; path = "libPods-KYSFishhook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0579479A07DF9E24D32C2F3B81A2C3 /* fishhook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = fishhook.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 		25B9C14CB92FE4762C7F358BD2AC4021 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5C091334930957AEC11543CD0D5F9AE2 /* fishhook */,
+				AF22AD7CE0A9029341CDDA26E76D4C0A /* fishhook */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -81,6 +81,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		332EBD7AC3F3869BBC336520DFAB6554 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				4277A0A1E934096BBFAF2A07C7584140 /* fishhook.podspec */,
+				CA5C644804677E00B1F8DE803A0ACC14 /* LICENSE */,
+				91AF37DBA44575C09FE82C0F20258F91 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		4A2908994AC0AEAD9EB70BF67020528B /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,40 +99,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5C091334930957AEC11543CD0D5F9AE2 /* fishhook */ = {
+		A448CA26C0548527E9B1CCB0D1446C42 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1BC5AD310ABC60FFEFE3059CBC03408C /* fishhook.c */,
-				21C562D0C81F9CBFAB8D165957F28985 /* fishhook.h */,
-				A037CDC1A5605EFE85B5DC95F17DED9B /* Pod */,
-				9861B333356BA85CACE71173261E4100 /* Support Files */,
-			);
-			name = fishhook;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		9861B333356BA85CACE71173261E4100 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9E3986CE30914CB2A8D0DE410FAE4CA6 /* fishhook.modulemap */,
-				D793C28D7C251DDA04510B83AD499488 /* fishhook-dummy.m */,
-				D829D6F71D276179584D0AB344223EB3 /* fishhook-prefix.pch */,
-				F1E6EC8CD44A722D41D26FC5B7257CAE /* fishhook-umbrella.h */,
-				13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */,
-				060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */,
+				FF0579479A07DF9E24D32C2F3B81A2C3 /* fishhook.modulemap */,
+				9B2CFB907B221EAA9C975A28FBAB193B /* fishhook-dummy.m */,
+				35234871BC0740B0CA0388D4A3568BC8 /* fishhook-prefix.pch */,
+				CFB5216A8CFC17A0C1BC56ED4D14CDA0 /* fishhook-umbrella.h */,
+				6863178DFCD9A929815B51CEFD60A884 /* fishhook.debug.xcconfig */,
+				991F75A478F91052BE4F5579D3EF6EF0 /* fishhook.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "KYSFishhook/Pods/Target Support Files/fishhook";
-			sourceTree = "<group>";
-		};
-		A037CDC1A5605EFE85B5DC95F17DED9B /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				84A9892868E6F824F0BB08954AEA5909 /* fishhook.podspec */,
-				11A531AA86DEFFBBA9DC480BC78DAC77 /* LICENSE */,
-				56E7BF947E114A1FBC9F2974648BB673 /* README.md */,
-			);
-			name = Pod;
+			path = "KYSFishhookDemo/Pods/Target Support Files/fishhook";
 			sourceTree = "<group>";
 		};
 		A984E57BD99893AE4A465EA28BAC9BDD /* Pods-KYSFishhook */ = {
@@ -136,6 +124,18 @@
 			);
 			name = "Pods-KYSFishhook";
 			path = "Target Support Files/Pods-KYSFishhook";
+			sourceTree = "<group>";
+		};
+		AF22AD7CE0A9029341CDDA26E76D4C0A /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				BD9D94161840D477F3C67152DA9E5DCB /* fishhook.c */,
+				08F8267941A36DA177C4BEA484E2AFDD /* fishhook.h */,
+				332EBD7AC3F3869BBC336520DFAB6554 /* Pod */,
+				A448CA26C0548527E9B1CCB0D1446C42 /* Support Files */,
+			);
+			name = fishhook;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -337,7 +337,7 @@
 		};
 		37DF148AEF5CA4D70AEB91166F3D6BEC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13778969D502F6E4E598D20BEB572C93 /* fishhook.debug.xcconfig */;
+			baseConfigurationReference = 6863178DFCD9A929815B51CEFD60A884 /* fishhook.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -406,7 +406,7 @@
 		};
 		A147222611A114B8EF228B9A0A03D8BF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 060339CD5141CE98D4CEF6D5DB05AD66 /* fishhook.release.xcconfig */;
+			baseConfigurationReference = 991F75A478F91052BE4F5579D3EF6EF0 /* fishhook.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

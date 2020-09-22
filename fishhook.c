@@ -89,9 +89,9 @@ static int prepend_rebindings(struct rebindings_entry **rebindings_head,
     *rebindings_head = new_entry;       // 移动 head 指针，指向表头
     return 0;
 }
-
+// 获取进程中特定内存地址的内存保护信息，确保内存可读
 static vm_prot_t get_protection(void *sectionStart) {
-    mach_port_t task = mach_task_self();
+    mach_port_t task = mach_task_self();            // 获得任务的端口
     vm_size_t size = 0;
     vm_address_t address = (vm_address_t)sectionStart;
     memory_object_name_t object;
@@ -108,24 +108,25 @@ static vm_prot_t get_protection(void *sectionStart) {
     if (info_ret == KERN_SUCCESS) {
         return info.protection;
     } else {
-        return VM_PROT_READ;
+        return VM_PROT_READ;            // 只读权限
     }
 }
 static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
-                                           section_t *section,
+                                           section_t *section,  // _DATA.__nl_symbol_ptr（_DATA.__la_symbol_ptr）
                                            intptr_t slide,
                                            nlist_t *symtab,
                                            char *strtab,
                                            uint32_t *indirect_symtab) {
-    // 在 Indirect Symbol 表中检索到对应位置
+    // section 是否可修改
     const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;
-    // 获取 _DATA.__nl_symbol_ptr（_DATA.__la_symbol_ptr）
+    // 存放符号表的各个索引
     uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;
+    // 存放绑定的各个符号（section 对应的符号丢在这）
     void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);
     vm_prot_t oldProtection = VM_PROT_READ;
     if (isDataConst) {
         oldProtection = get_protection(rebindings);
-        mprotect(indirect_symbol_bindings, section->size, PROT_READ | PROT_WRITE);
+        mprotect(indirect_symbol_bindings, section->size, PROT_READ | PROT_WRITE);  // 修改权限
     }
     // 用（size / 一阶指针）来计算个数，遍历整个 Section
     for (uint i = 0; i < section->size / sizeof(void *); i++) {
@@ -143,11 +144,9 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
         struct rebindings_entry *cur = rebindings;
         while (cur) {
             for (uint j = 0; j < cur->rebindings_nel; j++) {
-                if (symbol_name_longer_than_1 &&
-                    strcmp(&symbol_name[1], cur->rebindings[j].name) == 0) {
+                if (symbol_name_longer_than_1 && strcmp(&symbol_name[1], cur->rebindings[j].name) == 0) {
                     // 如果是第一次对跳转地址进行重写
-                    if (cur->rebindings[j].replaced != NULL &&
-                        indirect_symbol_bindings[i] != cur->rebindings[j].replacement) {
+                    if (cur->rebindings[j].replaced != NULL && indirect_symbol_bindings[i] != cur->rebindings[j].replacement) {
                         *(cur->rebindings[j].replaced) = indirect_symbol_bindings[i];   // 记录原始跳转地址
                     }
                     indirect_symbol_bindings[i] = cur->rebindings[j].replacement;       // 重写跳转地址
@@ -169,7 +168,7 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
         if (oldProtection & VM_PROT_EXECUTE) {
             protection |= PROT_EXEC;
         }
-        mprotect(indirect_symbol_bindings, section->size, protection);
+        mprotect(indirect_symbol_bindings, section->size, protection);  // 重置权限
     }
 }
 
@@ -187,16 +186,16 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     // header = 0x100000000 - 二进制文件基址默认偏移
     // sizeof(mach_header_t) = 0x20 - Mach-O Header 部分 ？
     uintptr_t cur = (uintptr_t)header + sizeof(mach_header_t); // 跳过 Mach-O Header
-    // 遍历每一个 Load Command，游标每一次偏移每个命令的 Command Size 大小
+    // 遍历每一个 Load Command，得到 SEG_LINKEDIT、LC_SYMTAB、LC_DYSYMTAB
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (segment_command_t *)cur;         // 取出当前的 Load Command
         if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {
-            if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {
+            if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {  // SEG_LINKEDIT：包含动态链接器所需的符号表、字符串表、重定向表等数据
                 linkedit_segment = cur_seg_cmd;
             }
-        } else if (cur_seg_cmd->cmd == LC_SYMTAB) {     // LC_SYMTAB：当前区域链接器信息
+        } else if (cur_seg_cmd->cmd == LC_SYMTAB) {                 // LC_SYMTAB：链接器信息区域，描述在 __LINKEDIT 段的哪找字符串表、符号表
             symtab_cmd = (struct symtab_command*)cur_seg_cmd;
-        } else if (cur_seg_cmd->cmd == LC_DYSYMTAB) {   // LC_DYSYMTAB：动态链接器信息区域
+        } else if (cur_seg_cmd->cmd == LC_DYSYMTAB) {               // LC_DYSYMTAB：动态链接器信息区域
             dysymtab_cmd = (struct dysymtab_command*)cur_seg_cmd;
         }
     }
@@ -210,10 +209,10 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
         slide: ASLR 偏移量
         vmaddr: SEG_LINKEDIT 的虚拟地址
         fileoff: SEG_LINKEDIT 地址偏移
-        SEG_LINKEDIT真实地址 = ASLR偏移量 + SEG_LINKEDIT虚拟地址
-        base = SEG_LINKEDIT真实地址 - SEG_LINKEDIT地址偏移
-        base = ASLR偏移量 + SEG_LINKEDIT虚拟地址 - SEG_LINKEDIT地址偏移
+        虚拟地址偏移量 = 虚拟地址（vmaddr） - 地址移量（fileoff）
+        段基址 = ASLR的偏移量（slide） + 虚拟地址偏移量
      */
+    
     // Find base symbol/string table addresses
     uintptr_t linkedit_base = (uintptr_t)slide + linkedit_segment->vmaddr - linkedit_segment->fileoff;
     // 计算 symbol table 表的首地址
@@ -225,6 +224,7 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     // Get indirect symbol table (array of uint32_t indices into symbol table)
     uint32_t *indirect_symtab = (uint32_t *)(linkedit_base + dysymtab_cmd->indirectsymoff);
     
+    // 遍历 Load Commands 中的 Segment command
     cur = (uintptr_t)header + sizeof(mach_header_t);
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (segment_command_t *)cur;
@@ -233,7 +233,7 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
                 strcmp(cur_seg_cmd->segname, SEG_DATA_CONST) != 0) {
                 continue; // 过滤 __DATA 或者 __DATA_CONST
             }
-            // 遍历 Segment 中的 Section
+            // 遍历 Segment command 中的 Section（每个 Segment 可能包含一个或多个 Section）
             for (uint j = 0; j < cur_seg_cmd->nsects; j++) {
                 section_t *sect =
                 (section_t *)(cur + sizeof(segment_command_t)) + j;
