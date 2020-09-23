@@ -228,20 +228,15 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     cur = (uintptr_t)header + sizeof(mach_header_t);
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (segment_command_t *)cur;
-        if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {
-            if (strcmp(cur_seg_cmd->segname, SEG_DATA) != 0 &&
-                strcmp(cur_seg_cmd->segname, SEG_DATA_CONST) != 0) {
-                continue; // 过滤 __DATA 或者 __DATA_CONST
+        if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {    // LC_SEGMENT_64
+            if (strcmp(cur_seg_cmd->segname, SEG_DATA) != 0 && strcmp(cur_seg_cmd->segname, SEG_DATA_CONST) != 0) {
+                continue;       // 过滤 __DATA 或者 __DATA_CONST
             }
-            // 遍历 Segment command 中的 Section（每个 Segment 可能包含一个或多个 Section）
-            for (uint j = 0; j < cur_seg_cmd->nsects; j++) {
-                section_t *sect =
-                (section_t *)(cur + sizeof(segment_command_t)) + j;
-                // flags & SECTION_TYPE 通过 SECTION_TYPE 掩码获取 flags 记录类型的 8 bit
-                if ((sect->flags & SECTION_TYPE) == S_LAZY_SYMBOL_POINTERS) {
-                    perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
-                }
-                if ((sect->flags & SECTION_TYPE) == S_NON_LAZY_SYMBOL_POINTERS) {
+            for (uint j = 0; j < cur_seg_cmd->nsects; j++) {    // 遍历 Segment command 中的 Section（可包含多个）
+                section_t *sect = (section_t *)(cur + sizeof(segment_command_t)) + j;
+                uint32_t section_type = sect->flags & SECTION_TYPE;     // 获取记录类型
+                // 如果为加载符号或非懒加载符号，进行重绑定
+                if (section_type == S_LAZY_SYMBOL_POINTERS || section_type == S_NON_LAZY_SYMBOL_POINTERS) {
                     perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
                 }
             }
