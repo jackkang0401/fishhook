@@ -116,13 +116,13 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
                                            intptr_t slide,              // ASLR
                                            nlist_t *symtab,             // 符号表
                                            char *strtab,                // 字符表
-                                           uint32_t *indirect_symtab) {
-    // section 是否可修改
-    const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;
-    // 存放符号表的各个索引
-    uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;
-    // 存放绑定的各个符号（section 对应的符号存在这）
-    void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);
+                                           uint32_t *indirect_symtab)   // 间接符号表（每个条目的内容为其在 Symbol Table 中的序号）
+{
+    const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;         // section 是否可修改
+    
+    uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;       // section->reserved1 为在间接符号表中的起始条目
+    void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);  // 存放绑定的各个符号（section 对应的符号存在这）
+    
     vm_prot_t oldProtection = VM_PROT_READ;
     if (isDataConst) {
         oldProtection = get_protection(rebindings);
@@ -130,10 +130,10 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
     }
     // 用（size / 一阶指针）来计算个数，遍历整个 Section
     for (uint i = 0; i < section->size / sizeof(void *); i++) {
-        // 通过下标来获取每一个 Indirect Address 的 value，这个 value 也是外层寻址时需要的下标
-        uint32_t symtab_index = indirect_symbol_indices[i];                 // 获取符号表的索引
-        if (symtab_index == INDIRECT_SYMBOL_ABS || symtab_index == INDIRECT_SYMBOL_LOCAL ||
-            symtab_index == (INDIRECT_SYMBOL_LOCAL   | INDIRECT_SYMBOL_ABS)) {
+        uint32_t symtab_index = indirect_symbol_indices[i];                 // 获取在符号表中的序号
+        if (symtab_index == INDIRECT_SYMBOL_ABS ||
+            symtab_index == INDIRECT_SYMBOL_LOCAL ||
+            symtab_index == (INDIRECT_SYMBOL_LOCAL | INDIRECT_SYMBOL_ABS)) {
             continue;
         }
         uint32_t strtab_offset = symtab[symtab_index].n_un.n_strx;          // 在符号表中获取符号名在字符表中的偏移
@@ -224,7 +224,7 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     // Get indirect symbol table (array of uint32_t indices into symbol table)
     uint32_t *indirect_symtab = (uint32_t *)(linkedit_base + dysymtab_cmd->indirectsymoff);
     
-    // 遍历 Load Commands 中的 Segment command
+    // 遍历 Load Commands 中的 Segment Command
     cur = (uintptr_t)header + sizeof(mach_header_t);
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
         cur_seg_cmd = (segment_command_t *)cur;
@@ -232,7 +232,8 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
             if (strcmp(cur_seg_cmd->segname, SEG_DATA) != 0 && strcmp(cur_seg_cmd->segname, SEG_DATA_CONST) != 0) {
                 continue;       // 过滤 __DATA 或者 __DATA_CONST
             }
-            for (uint j = 0; j < cur_seg_cmd->nsects; j++) {    // 遍历 Segment command 中的 Section（可包含多个）
+            // 遍历 Segment command 中的 Section
+            for (uint j = 0; j < cur_seg_cmd->nsects; j++) {
                 section_t *sect = (section_t *)(cur + sizeof(segment_command_t)) + j;
                 uint32_t section_type = sect->flags & SECTION_TYPE;     // 获取记录类型
                 // 如果为加载符号或非懒加载符号，进行重绑定
