@@ -118,9 +118,9 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
                                            char *strtab,                // 字符表
                                            uint32_t *indirect_symtab)   // 间接符号表（每个条目的内容为其在 Symbol Table 中的序号）
 {
-    const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;         // section 是否可修改
+    const bool isDataConst = strcmp(section->segname, SEG_DATA_CONST) == 0;         // section 是否可写
     
-    uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;       // section->reserved1 为在间接符号表中的起始条目
+    uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;       // section->reserved1 为 Section 在间接符号表中的起始条目
     void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);  // 存放绑定的各个符号（section 对应的符号存在这）
     
     vm_prot_t oldProtection = VM_PROT_READ;
@@ -130,7 +130,7 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
     }
     // 用（size / 一阶指针）来计算个数，遍历整个 Section
     for (uint i = 0; i < section->size / sizeof(void *); i++) {
-        uint32_t symtab_index = indirect_symbol_indices[i];                 // 获取在符号表中的序号
+        uint32_t symtab_index = indirect_symbol_indices[i];                 // 获取第 i 个地址在符号表中的序号（即，Section 的第 i 个地址对应的符号表序号）
         if (symtab_index == INDIRECT_SYMBOL_ABS ||
             symtab_index == INDIRECT_SYMBOL_LOCAL ||
             symtab_index == (INDIRECT_SYMBOL_LOCAL | INDIRECT_SYMBOL_ABS)) {
@@ -150,7 +150,7 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
                         *(cur->rebindings[j].replaced) = indirect_symbol_bindings[i];   // 记录原始跳转地址
                     }
                     indirect_symbol_bindings[i] = cur->rebindings[j].replacement;       // 重写跳转地址
-                    goto symbol_loop; // 迭代到下一个
+                    goto symbol_loop;                                                   // 迭代到下一个
                 }
             }
             cur = cur->next;
@@ -183,19 +183,17 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     segment_command_t *linkedit_segment = NULL;
     struct symtab_command* symtab_cmd = NULL;
     struct dysymtab_command* dysymtab_cmd = NULL;
-    // header = 0x100000000 - 二进制文件基址默认偏移
-    // sizeof(mach_header_t) = 0x20 - Mach-O Header 部分 ？
-    uintptr_t cur = (uintptr_t)header + sizeof(mach_header_t); // 跳过 Mach-O Header
+    uintptr_t cur = (uintptr_t)header + sizeof(mach_header_t);      // 跳过 Mach-O Header
     // 遍历每一个 Load Command，得到 SEG_LINKEDIT、LC_SYMTAB、LC_DYSYMTAB
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
-        cur_seg_cmd = (segment_command_t *)cur;         // 取出当前的 Load Command
+        cur_seg_cmd = (segment_command_t *)cur;                     // 取出当前的 Load Command
         if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {
-            if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {  // SEG_LINKEDIT：包含动态链接器所需的符号表、字符串表、重定向表等数据
+            if (strcmp(cur_seg_cmd->segname, SEG_LINKEDIT) == 0) {  // SEG_LINKEDIT：加载命令信息
                 linkedit_segment = cur_seg_cmd;
             }
-        } else if (cur_seg_cmd->cmd == LC_SYMTAB) {                 // LC_SYMTAB：链接器信息区域，描述在 __LINKEDIT 段的哪里找字符串表、符号表
+        } else if (cur_seg_cmd->cmd == LC_SYMTAB) {                 // LC_SYMTAB：链接器信息
             symtab_cmd = (struct symtab_command*)cur_seg_cmd;
-        } else if (cur_seg_cmd->cmd == LC_DYSYMTAB) {               // LC_DYSYMTAB：动态链接器信息区域
+        } else if (cur_seg_cmd->cmd == LC_DYSYMTAB) {               // LC_DYSYMTAB：动态链接器信息
             dysymtab_cmd = (struct dysymtab_command*)cur_seg_cmd;
         }
     }
@@ -227,15 +225,15 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     // 遍历 Load Commands 中的 Segment Command
     cur = (uintptr_t)header + sizeof(mach_header_t);
     for (uint i = 0; i < header->ncmds; i++, cur += cur_seg_cmd->cmdsize) {
-        cur_seg_cmd = (segment_command_t *)cur;
-        if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {    // LC_SEGMENT_64
+        cur_seg_cmd = (segment_command_t *)cur;                     // 取出当前的 Load Command
+        if (cur_seg_cmd->cmd == LC_SEGMENT_ARCH_DEPENDENT) {        // LC_SEGMENT_64
             if (strcmp(cur_seg_cmd->segname, SEG_DATA) != 0 && strcmp(cur_seg_cmd->segname, SEG_DATA_CONST) != 0) {
-                continue;       // 过滤 __DATA 或者 __DATA_CONST
+                continue;                                           // 过滤 __DATA 或者 __DATA_CONST
             }
             // 遍历 Segment command 中的 Section
             for (uint j = 0; j < cur_seg_cmd->nsects; j++) {
                 section_t *sect = (section_t *)(cur + sizeof(segment_command_t)) + j;
-                uint32_t section_type = sect->flags & SECTION_TYPE;     // 获取记录类型
+                uint32_t section_type = sect->flags & SECTION_TYPE; // 获取记录类型
                 // 如果为加载符号或非懒加载符号，进行重绑定
                 if (section_type == S_LAZY_SYMBOL_POINTERS || section_type == S_NON_LAZY_SYMBOL_POINTERS) {
                     perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
@@ -271,7 +269,7 @@ int rebind_symbols(struct rebinding rebindings[], size_t rebindings_nel) {
     }
     if (!_rebindings_head->next) {          // NULL == _rebindings_head->next 代表第一次调用
         // 第一次调用，注册 _rebind_symbols_for_image 回调，当 dyld 链接符号时，调用此回调函数
-        _dyld_register_func_for_add_image(_rebind_symbols_for_image);   // 注册完会触发一次回调
+        _dyld_register_func_for_add_image(_rebind_symbols_for_image);   // 已经加载了某些镜像，会分别对这些加载完毕的镜像调用注册的回调
     } else {
         uint32_t c = _dyld_image_count();       // 先获取 dyld 镜像数量
         for (uint32_t i = 0; i < c; i++) {      // 根据下标依次进行重绑定过程，参数 Mach-O 头，ASLR偏移量
